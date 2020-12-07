@@ -192,6 +192,12 @@ namespace LinqToLdap
             Credentials = credentials;
             return this;
         }
+        
+        IPooledConnectionFactoryConfiguration IPooledConnectionFactoryConfiguration.SetAcceptAllCertificates(bool acceptAll)
+        {
+            AcceptAllCertificates = acceptAll;
+            return this;
+        }
 
         IPooledConnectionFactoryConfiguration IPooledConnectionFactoryConfiguration.MaxPoolSizeIs(int size)
         {

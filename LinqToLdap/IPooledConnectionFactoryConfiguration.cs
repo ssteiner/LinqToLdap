@@ -116,5 +116,12 @@ namespace LinqToLdap
         /// <param name="interval">The value</param>
         /// <returns></returns>
         IPooledConnectionFactoryConfiguration ScavengeIntervalIs(double interval);
+        
+        /// <summary>
+        /// should the connection accept all certificates, even untrusted ones
+        /// </summary>
+        /// <param name="acceptAll"></param>
+        /// <returns></returns>
+        IPooledConnectionFactoryConfiguration SetAcceptAllCertificates(bool acceptAll);
     }
 }

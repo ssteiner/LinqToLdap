@@ -136,6 +136,8 @@ namespace LinqToLdap
 
                 connection.SessionOptions.ProtocolVersion = LdapProtocolVersion;
                 connection.SessionOptions.SecureSocketLayer = UsesSsl;
+                if (AcceptAllCertificates)
+                    connection.SessionOptions.VerifyServerCertificate += (sender, certificate) => true;
                 connection.Timeout = Timeout;
 
                 if (Logger != null && Logger.TraceEnabled) Logger.Trace("Connection Built");
@@ -196,6 +198,11 @@ namespace LinqToLdap
         /// Name of the server
         /// </summary>
         protected string ServerName { get; set; }
+        
+        /// <summary>
+        /// accepts even untrusted certificated
+        /// </summary>
+        protected bool AcceptAllCertificates { get; set; }
 
         /// <summary>
         /// Gets or sets the logger.
