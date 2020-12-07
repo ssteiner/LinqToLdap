@@ -41,6 +41,7 @@ namespace LinqToLdap
 #endif
 
         private int _serverMaxPageSize = 500;
+        private int _serverMaxResultSize = 0;
         private bool _pagingEnabled = true;
 #if NET35
         private readonly Collections.SafeList<IEventListener> _listeners = new Collections.SafeList<IEventListener>();
@@ -186,6 +187,22 @@ namespace LinqToLdap
         public LdapConfiguration DisablePaging()
         {
             _pagingEnabled = false;
+            return this;
+        }
+        
+        /// <summary>
+        /// Get the server max result size.  Default is 0 (no limit).  Change this value with <see cref="MaxResultSizeIs"/>.
+        /// </summary>
+        public int ServerMaxResultSize => _serverMaxResultSize;
+
+        /// <summary>
+        /// Indicates the maximum number of results the server can return in total
+        /// </summary>
+        /// <param name="size">The maximum amount</param>
+        /// <returns></returns>
+        public LdapConfiguration MaxResultSizeIs(int size)
+        {
+            _serverMaxResultSize = size;
             return this;
         }
 

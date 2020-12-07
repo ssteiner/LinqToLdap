@@ -9,7 +9,7 @@ namespace LinqToLdap.QueryCommands
 {
     internal abstract class QueryCommand : IQueryCommand
     {
-        protected readonly SearchRequest SearchRequest;
+        internal readonly SearchRequest SearchRequest;
         protected readonly IQueryCommandOptions Options;
         protected readonly IObjectMapping Mapping;
 

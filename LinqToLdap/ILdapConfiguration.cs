@@ -31,6 +31,11 @@ namespace LinqToLdap
         /// Indicates if paging is enabled.
         /// </summary>
         bool PagingEnabled { get; }
+        
+        /// <summary>
+        /// Get the server max result size
+        /// </summary>
+        int ServerMaxResultSize { get; }
 
         /// <summary>
         /// Creates a <see cref="DirectoryContext"/> from the configuration.

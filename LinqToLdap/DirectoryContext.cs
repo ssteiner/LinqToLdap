@@ -139,7 +139,8 @@ namespace LinqToLdap
                 {
                     Log = Logger,
                     MaxPageSize = _configuration.ServerMaxPageSize,
-                    NamingContext = namingContext
+                    NamingContext = namingContext,
+                    MaxResultSize = _configuration.ServerMaxResultSize
                 };
                 var directoryQuery = new DirectoryQuery<T>(provider);
                 return directoryQuery;

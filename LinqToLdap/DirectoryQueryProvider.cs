@@ -41,6 +41,8 @@ namespace LinqToLdap
         public bool IsDynamic { private get; set; }
 
         public int MaxPageSize { get; set; }
+        
+        public int MaxResultSize { get; set; }
 
         public string NamingContext { get; set; }
 
@@ -79,6 +81,8 @@ namespace LinqToLdap
                     throw new ObjectDisposedException("_connection", "The LdapConnection associated with this provider has been disposed.");
                 }
 #endif
+                if (MaxResultSize > 0 && command is QueryCommand command1)
+                    command1.SearchRequest.SizeLimit = MaxResultSize;
                 return command.Execute(connection, _scope, MaxPageSize, _pagingEnabled, Log, NamingContext);
             }
             catch (Exception ex)
